@@ -1,0 +1,3 @@
+Error in line 1
+palindrome
+Warning in line3
