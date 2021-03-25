@@ -4,12 +4,20 @@ from .models import Records
 # Create your views here.
 
 
-def student_form(request):
+def student_form(request, id=0):
     if request.method == 'GET':
-        form = StudentForm()
+        if id == 0:
+            form = StudentForm()
+        else:
+            student = Records.objects.get(pk=id)
+            form = StudentForm(instance=student)
         return render(request, "student_record/student_form.html", {'form': form})
     else:
-        form = StudentForm(request.POST)
+        if id == 0:
+            form = StudentForm(request.POST)
+        else:
+            student = Records.objects.get(pk=id)
+            form = StudentForm(request.POST, student)
         if form.is_valid():
             form.save()
         return redirect("/student_records/")
@@ -20,13 +28,15 @@ def student_list(request):
     return render(request, "student_record/student_list.html", context)
 
 
-def student_update(request):
-    return
-
-
 def student_search(request):
-    return
+    if request.method == 'GET' and request.GET.get('search'):
+        context = {'student_list': [Records.objects.get(pk=request.GET.get('search'))]}
+    else:
+        context = {'student_list': Records.objects.all()}
+    return render(request, "student_record/student_list.html", context)
 
 
-def student_delete(request):
-    return
+def student_delete(request, id):
+    student = Records.objects.get(pk=id)
+    student.delete()
+    return redirect('/student_records/')
