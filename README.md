@@ -20,7 +20,15 @@ Problem 2:
      - to give input update problem3_input.txt present in folder
      - output will be stored in problem3_output.txt
  
- Problem 3:
+  Problem 4:
+   Prerequisite:
+    python 3.6
+     - use command python Problem4.py to run file
+     - to give input update variable folder present in folder
+     - output will be stored in problem3_output.txt
+ 
+ 
+ Problem 5:
    Prerequisite:
     Python==3.6
     Django==3.1.3
