@@ -13,5 +13,9 @@ def group_by_owners(data):
 
 
 value = {'Input.txt': 'Randy', 'Code.py': 'Stan', 'Output.txt': 'Randy'}
-
+print('Input :' + str(value))
 output = group_by_owners(value)
+
+with open('Problem1_output.txt','w') as x :
+    x.writelines(str(output))
+    print('Output : '+str(output))

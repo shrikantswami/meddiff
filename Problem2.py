@@ -10,5 +10,9 @@ def check_is_palindrome(word):
 
 
 word='svs'
-flag = check_is_palindrome(word=word)
-print(flag)
+print('input : svs')
+Output = check_is_palindrome(word=word)
+
+with open('Problem2_output.txt','w') as x :
+    x.writelines(str(Output))
+    print('output it is palindrome:'+str(Output))
